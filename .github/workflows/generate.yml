@@ -1,14 +1,9 @@
 name: Generate Animation
 
 on:
-  # Jalankan secara otomatis setiap 24 jam
   schedule:
     - cron: "0 0 * * *" 
-  
-  # Bisa juga dijalankan secara manual dari tab Actions
   workflow_dispatch:
-  
-  # Jalankan setiap ada push ke branch main
   push:
     branches:
     - main
@@ -19,11 +14,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      # 1. Checkout repository
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. Generate file animasi ular (Snake)
+      # PERBAIKAN ADA DI SINI (tambahkan /dist)
       - name: Generate contribution grid snake animation
         uses: Platane/snk/svg@v3
         id: snake-svg
@@ -33,7 +27,6 @@ jobs:
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
 
-      # 3. Push file SVG hasil generate ke branch khusus (misal: output)
       - name: Push snake animation to github page
         uses: crazy-max/ghaction-github-pages@v4
         with:
