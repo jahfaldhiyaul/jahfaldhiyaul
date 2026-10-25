@@ -39,9 +39,3 @@ jobs:
 
 permissions:
   contents: write
-
-
-
-permissions:
-  contents: writpermissions:
-  contents: wri
